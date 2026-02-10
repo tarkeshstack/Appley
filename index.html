@@ -94,25 +94,7 @@ input{
 ">
   Install App
 </button>
-
-<script>
-let deferredPrompt;
-const installBtn = document.getElementById("installBtn");
-
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.style.display = "block";
-});
-
-installBtn.addEventListener("click", async () => {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  deferredPrompt = null;
-  installBtn.style.display = "none";
-});
-</script>
-
+  
 <h1><b>Appley</b></h1>
 <div class="subtitle">Google for apps</div>
 
@@ -205,6 +187,21 @@ function renderApps(apps){
       </div>`;
   });
 }
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "block";
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt = null;
+  installBtn.style.display = "none";
+});
 </script>
 
 </body>
